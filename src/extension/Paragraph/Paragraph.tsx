@@ -1,4 +1,4 @@
-import { Node } from "@tiptap/core";
+import { mergeAttributes, Node } from "@tiptap/core";
 import { Typography } from "@mui/material";
 import {
   NodeViewWrapper,
@@ -8,9 +8,9 @@ import {
 
 const ParagraphNodeView = () => {
   return (
-    <NodeViewWrapper>
+    <NodeViewWrapper as={"div"}>
       <Typography>
-        <NodeViewContent />
+        <NodeViewContent as={"span"} />
       </Typography>
     </NodeViewWrapper>
   );
@@ -22,31 +22,19 @@ export const Paragraph = Node.create({
   content: "inline*",
   group: "block",
 
-  addAttributes() {
-    return {
-      type: {
-        default: "Typography",
-        parseHTML: (element) => element.getAttribute("data-type"),
-        renderHTML: (attributes) => {
-          return { "data-type": attributes.type };
-        },
-      },
-    };
-  },
-
   addNodeView() {
     return ReactNodeViewRenderer(ParagraphNodeView);
-  },
-
-  renderHTML({ HTMLAttributes }) {
-    return ["div", { "data-type": "Typography", ...HTMLAttributes }, 0];
   },
 
   parseHTML() {
     return [
       {
-        tag: 'div[data-type="Typography"]',
+        tag: "p",
       },
     ];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return ["p", mergeAttributes(HTMLAttributes), 0];
   },
 });

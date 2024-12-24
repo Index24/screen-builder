@@ -1,13 +1,13 @@
-import { Placeholder, StarterKit, Alert, SlashCommand, Paragraph } from ".";
+import {
+  Document,
+  Text,
+  Alert,
+  SlashCommand,
+  Paragraph,
+  Bold,
+  Italic,
+} from ".";
 
 export function EditorExtensions() {
-  return [
-    StarterKit.configure({
-      paragraph: false,
-    }),
-    Placeholder,
-    Alert,
-    SlashCommand,
-    Paragraph,
-  ];
+  return [Alert, SlashCommand, Document, Text, Paragraph, Bold, Italic];
 }

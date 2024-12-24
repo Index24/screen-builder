@@ -1,5 +1,7 @@
-export { StarterKit } from "@tiptap/starter-kit";
-export { Placeholder } from "@tiptap/extension-placeholder";
+export { Document } from "@tiptap/extension-document";
+export { Text } from "@tiptap/extension-text";
+export { Bold } from "@tiptap/extension-bold";
+export { Italic } from "@tiptap/extension-italic";
 
 export { Alert } from "./Alert";
 export { SlashCommand } from "./SlashCommand";

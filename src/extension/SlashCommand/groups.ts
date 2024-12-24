@@ -17,7 +17,12 @@ export const GROUPS: Group[] = [
             .insertContent({
               type: "Alert",
               attrs: { severity: "info", color: "info" },
-              content: [{ type: "text", text: "Ваш текст в Alert" }],
+              content: [
+                {
+                  type: "paragraph",
+                  content: [{ type: "text", text: "Alert text" }],
+                },
+              ],
             })
             .run(),
       },

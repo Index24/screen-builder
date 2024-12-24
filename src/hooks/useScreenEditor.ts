@@ -1,5 +1,5 @@
 import { useEditor } from "@tiptap/react";
-import type { Editor } from "@tiptap/core";
+import type { Editor, JSONContent } from "@tiptap/core";
 import { EditorExtensions } from "../extension/editor-extensions";
 
 declare global {
@@ -8,9 +8,37 @@ declare global {
   }
 }
 
+const initialContent: JSONContent = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "This is a ",
+        },
+        {
+          type: "text",
+          marks: [
+            {
+              type: "bold",
+            },
+          ],
+          text: "simple",
+        },
+        {
+          type: "text",
+          text: " example",
+        },
+      ],
+    },
+  ],
+};
+
 export function useScreenEditor() {
   const editor = useEditor({
-    content: `<p>This is a simple <b>editor</b> example.</p>`,
+    content: initialContent,
     autofocus: true,
     extensions: [...EditorExtensions()],
     editorProps: {

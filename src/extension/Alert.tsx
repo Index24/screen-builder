@@ -105,7 +105,7 @@ const AlertNodeView = ({
 export const Alert = Node.create({
   name: "Alert",
   group: "block",
-  content: "inline*",
+  content: "block+",
 
   addAttributes() {
     return {
