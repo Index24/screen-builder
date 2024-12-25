@@ -4,6 +4,7 @@ import { EditorContent } from "@tiptap/react";
 import { ContentItemMenu } from "./menus/ContentItemMenu";
 import { EditorJSONPreview } from "../EditorJSONPreview";
 import { TextMenu } from "./TextMenu";
+import { LinkMenu } from "./menus/LinkMenu";
 
 export const Editor = () => {
   const menuContainerRef = useRef(null);
@@ -23,6 +24,7 @@ export const Editor = () => {
         className="flex-1 overflow-y-auto bg-stone-100"
       />
       <ContentItemMenu editor={editor} />
+      <LinkMenu editor={editor} appendTo={menuContainerRef} />
       <TextMenu editor={editor} />
       <EditorJSONPreview editor={editor} />
     </div>

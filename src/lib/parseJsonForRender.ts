@@ -29,8 +29,7 @@ export function parseJsonForRender(json: JSONContent): JSONContent {
           if (mark.type === "link") {
             marks.push({
               type: "link",
-              href: mark.attrs?.href,
-              target: mark.attrs?.target,
+              ...(mark.attrs ? mark.attrs : {}),
             });
             textWithMarks = `<a>${textWithMarks}</a>`;
           }

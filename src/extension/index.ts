@@ -6,3 +6,4 @@ export { Italic } from "@tiptap/extension-italic";
 export { Alert } from "./Alert";
 export { SlashCommand } from "./SlashCommand";
 export { Paragraph } from "./Paragraph";
+export { Link } from "./Link";

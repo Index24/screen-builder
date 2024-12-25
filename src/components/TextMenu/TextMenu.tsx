@@ -1,10 +1,12 @@
 import { Editor } from "@tiptap/core";
 import { EditorView } from "@tiptap/pm/view";
 import { BubbleMenu, useEditorState } from "@tiptap/react";
+import * as Popover from "@radix-ui/react-popover";
 import { memo, useCallback } from "react";
 import { isTextSelected } from "../../lib/isTextSelected";
 import { Toolbar } from "../ui/Toolbar";
 import { Icon } from "../ui/Icon";
+import { LinkEditorPanel } from "../panels/LinkEditorPanel";
 
 // We memorize the button so each button is not rerendered
 // on every editor state change
@@ -42,6 +44,16 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
   );
   const onItalic = useCallback(
     () => editor.chain().focus().toggleItalic().run(),
+    [editor],
+  );
+
+  const onLink = useCallback(
+    (url: string, inNewTab?: boolean) =>
+      editor
+        .chain()
+        .focus()
+        .setLink({ href: url, target: inNewTab ? "_blank" : "" })
+        .run(),
     [editor],
   );
 
@@ -90,6 +102,16 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
         >
           <Icon name="Italic" />
         </MemoButton>
+        <Popover.Root>
+          <Popover.Trigger asChild>
+            <Toolbar.Button tooltip="Set Link">
+              <Icon name="Link" />
+            </Toolbar.Button>
+          </Popover.Trigger>
+          <Popover.Content>
+            <LinkEditorPanel onSetLink={onLink} />
+          </Popover.Content>
+        </Popover.Root>
       </Toolbar.Wrapper>
     </BubbleMenu>
   );
