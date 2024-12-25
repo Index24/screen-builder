@@ -3,6 +3,7 @@ import { useScreenEditor } from "../hooks/useScreenEditor";
 import { EditorContent } from "@tiptap/react";
 import { ContentItemMenu } from "./menus/ContentItemMenu";
 import { EditorJSONPreview } from "../EditorJSONPreview";
+import { TextMenu } from "./TextMenu";
 
 export const Editor = () => {
   const menuContainerRef = useRef(null);
@@ -22,6 +23,7 @@ export const Editor = () => {
         className="flex-1 overflow-y-auto bg-stone-100"
       />
       <ContentItemMenu editor={editor} />
+      <TextMenu editor={editor} />
       <EditorJSONPreview editor={editor} />
     </div>
   );
